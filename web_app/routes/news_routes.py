@@ -21,13 +21,13 @@ def news_headlines_api():
     else:
         return jsonify({"message":"Invalid Inputs. Please try again."}), 404
 
-@news_routes.route("/news/headlines")
-def weather_form():
+@news_routes.route("/news/form")
+def news_form():
     print("NEWS HEADLINES...")
-    return render_template("news_headlines.html")
+    return render_template("news_form.html")
 
 @news_routes.route("/news/headlines", methods=["GET", "POST"])
-def weather_forecast():
+def news_headlines():
     print("NEWS HEADLINES...")
 
     if request.method == "GET":

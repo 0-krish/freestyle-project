@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <!-- work on this -->
     <title>Welcome to the News Email App!</title>
@@ -37,20 +38,21 @@
         https://jinja.palletsprojects.com/en/2.11.x/tricks/
         https://getbootstrap.com/docs/5.0/components/navbar/
 
+          ('/about', 'about', 'About'),
+          ('/hello', 'hello', 'Hello'),
     -->
     {% set nav_links = [
-      <!--
-      ('/about', 'about', 'About'),
-      ('/hello', 'hello', 'Hello'),
-      -->
-      ('/news/form', 'news_form', 'News Form')
+
+      ('/news/form', 'news_form', 'Headline Subscription Form')
     ] -%}
     {% set active_page = active_page|default('home') -%}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">My Web App</a>
+            <a class="navbar-brand" href="/">News Headline Service</a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -84,13 +86,15 @@
 
         <footer style="margin-top:2em; margin-bottom:2em;">
         <hr>
-            &copy; Copyright 2022 Jay Deshmukh, Nicholas Sannito, Krish Sarawgi |
+            &copy; Copyright 2022 | Jay Deshmukh, Nicholas Sannito, Krish Sarawgi |
             <a href="https://github.com/prof-rossetti/intro-to-python/blob/main/exercises/web-app/README.md">Source</a>
         </footer>
     </div>
 
     <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+            crossorigin="anonymous"></script>
     <script type="text/javascript">
 
         console.log("Thanks for the page visit!")

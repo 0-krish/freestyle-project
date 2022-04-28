@@ -1,13 +1,20 @@
+{% extends "bootstrap_layout.html" %}
+{% set active_page = "news_form" %}
+
 {% block content %}
 
-    <h2>Summarized News Service</h2>
+    <h2>News Headline Service</h2>
 
-    <p>Request customized news delivered right to your inbox!...</p>
+    <p>Request customized news delivered right to your inbox!</p>
+    <br>
 
     <form action="/news/delivery" method="POST">
 
        
         <label>News Customization Options:</label>
+
+        <br>
+        <br>
 
         <label for="country">Which country's news would you like to see?:</label>
 
@@ -70,6 +77,7 @@
         </select>
 
         <br>
+        <br>
         
         <label for="category1">Choose the news cateogry you're most interested in:</label>
 
@@ -83,6 +91,7 @@
             <option value="technology">Technology</option>
         </select>
 
+        <br>
         <br>
 
         <label for="category2">Choose the news cateogry you're second most interested in:</label>
@@ -98,9 +107,10 @@
             <option value="None">I'm only interested in the first topic I chose</option>
         </select>
         
-        <br> 
+        <br>
+        <br>
 
-        <label for="category3">Choose the news cateogry you're second most interested in:</label>
+        <label for="category3">Choose the news cateogry you're third most interested in:</label>
 
         <select name="category3" id="category3">
             <option value="business">Business</option>
@@ -110,9 +120,12 @@
             <option value="science">Science</option>
             <option value="sports">Sports</option>
             <option value="technology">Technology</option>
+            <option value="None">I'm only interested in the first topic I chose</option>
             <option value="None">I'm only interested in the first two topics I chose</option>
         </select>
         
+        <br>
+        <br>
         <br>
 
         <button>Submit</button>
