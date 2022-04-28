@@ -1,11 +1,15 @@
 # get_api_data.py
 
+import os
+from dotenv import load_dotenv
 import json
 import requests
 #  from PIL import Image
 #  from tkinter import *
 
-API_KEY = "a99e3f1462084c119dff81cfbca51e04"
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
 
 country_code = "us"
 news_type = "top-headlines"
