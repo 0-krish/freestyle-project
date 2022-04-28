@@ -25,6 +25,3 @@ for headline in news_data["articles"]:
     print(headline["title"])
     if headline["description"] is not None:
         print(headline["description"])
-
-
-
