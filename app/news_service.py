@@ -9,7 +9,7 @@ import requests
 
 load_dotenv()
 
-API_KEY = os.getenv("API_KEY")
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
 def set_user_preferences():
 
@@ -21,7 +21,8 @@ def set_user_preferences():
 def get_headlines(country_code, news_category):
 
     news_type = "top-headlines" # default, no alternatives serviced
-    request_url = "https://newsapi.org/v2/" + news_type + "?country=" + country_code + "&category=" + news_category + "&apiKey=" + API_KEY
+    request_url = "https://newsapi.org/v2/" + news_type + "?country=" + country_code + "&category=" + \
+                  news_category + "&apiKey=" + NEWS_API_KEY
 
     gotten_request = requests.get(request_url)
     news_data = json.loads(gotten_request.text)
