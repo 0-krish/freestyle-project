@@ -1,7 +1,23 @@
-# requirements.txt
 
+# this is the requirements.txt file...
+
+###WEBAPP REQUIREMENTS###
+#
+# DEVELOPMENT / PRODUCTION
+#
+
+python-dotenv
+pgeocode
+pandas
+requests
+sendgrid==6.6.0
 requests
 
-# pillow
+flask
+gunicorn
 
-# tkinter
+#
+# TEST
+#
+
+pytest
