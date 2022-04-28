@@ -1,34 +1,34 @@
-# web_app/routes/weather_routes.py
+# web_app/routes/news_routes.py
 
 from flask import Blueprint, request, jsonify, render_template, redirect, flash # FYI new imports
 
-from app.weather_service import get_hourly_forecasts
+from app.news_service import get_headlines
 
-weather_routes = Blueprint("news_routes", __name__)
+news_routes = Blueprint("news_routes", __name__)
 
-@weather_routes.route("/api/weather/forecast.json")
-def weather_forecast_api():
-    print("WEATHER FORECAST (API)...")
+@news_routes.route("/api/news/headlines.json")
+def news_headlines_api():
+    print("NEWS HEADLINES (API)...")
     print("URL PARAMS:", dict(request.args))
 
     #country_code = request.args["country_code"] # the dict might not have this key all the time
     country_code = request.args.get("country_code") or "US"
-    zip_code = request.args.get("zip_code") or "20057"
+    news_category = request.args.get("news_category") or "business"
 
-    results = get_hourly_forecasts(country_code=country_code, zip_code=zip_code)
+    results = get_headlines(country_code=country_code, news_category=news_category)
     if results:
         return jsonify(results)
     else:
-        return jsonify({"message":"Invalid Geography. Please try again."}), 404
+        return jsonify({"message":"Invalid Inputs. Please try again."}), 404
 
-@weather_routes.route("/weather/form")
+@news_routes.route("/news/headlines")
 def weather_form():
-    print("WEATHER FORM...")
-    return render_template("weather_form.html")
+    print("NEWS HEADLINES...")
+    return render_template("news_headlines.html")
 
-@weather_routes.route("/weather/forecast", methods=["GET", "POST"])
+@news_routes.route("/news/headlines", methods=["GET", "POST"])
 def weather_forecast():
-    print("WEATHER FORECAST...")
+    print("NEWS HEADLINES...")
 
     if request.method == "GET":
         print("URL PARAMS:", dict(request.args))
@@ -37,13 +37,14 @@ def weather_forecast():
         print("FORM DATA:", dict(request.form))
         request_data = dict(request.form)
 
-    country_code = request_data.get("country_code") or "US"
-    zip_code = request_data.get("zip_code") or "20057"
+    country_code = request.args.get("country_code") or "US"
+    news_category = request.args.get("news_category") or "business"
 
-    results = get_hourly_forecasts(country_code=country_code, zip_code=zip_code)
+    results = get_headlines(country_code=country_code, news_category=news_category)
     if results:
-        flash("Weather Forecast Generated Successfully!", "success")
-        return render_template("weather_forecast.html", country_code=country_code, zip_code=zip_code, results=results)
+        flash("News Headlines Generated Successfully!", "success")
+        return render_template("news_headlines.html", country_code=country_code,
+                               news_category=news_category, results=results)
     else:
-        flash("Geography Error. Please try again!", "danger")
-        return redirect("/weather/form")
+        flash("Incorrect Inputs. Please try again!", "danger")
+        return redirect("/news/headlines")
