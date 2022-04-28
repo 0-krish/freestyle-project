@@ -10,7 +10,7 @@ load_dotenv()
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 SENDER_EMAIL_ADDRESS = os.getenv("SENDER_EMAIL_ADDRESS")
 
-def send_email(subject="[Daily Briefing] This is a test", html="<p>Hello World</p>", recipient_address=SENDER_EMAIL_ADDRESS):
+def send_email(subject="[News Headlines] This is a test", html="<p>Hello World</p>", recipient_address=SENDER_EMAIL_ADDRESS):
     """
     Sends an email with the specified subject and html contents to the specified recipient,
 
@@ -36,28 +36,26 @@ def send_email(subject="[Daily Briefing] This is a test", html="<p>Hello World</
 
 
 if __name__ == "__main__":
-    example_subject = "[Daily Briefing] This is a test"
+    example_subject = "[News Headlines] This is a test"
 
     example_html = f"""
-    <h3>This is a test of the Daily Briefing Service</h3>
+    <h3>This is a test of the News Headlines Service</h3>
 
-    <h4>Today's Date</h4>
     <p>Monday, January 1, 2040</p>
 
-    <h4>My Stocks</h4>
+    <h4>Business Headlines</h4>
     <ul>
-        <li>MSFT | +3%</li>
-        <li>GOOG | +2%</li>
-        <li>AAPL | +4%</li>
+        <li>5% inflation</li>
+        <li>Stocks rally</li>
+        <li>Elon buys Twitter</li>
     </ul>
 
-    <h4>My Forecast</h4>
+    <h4>Sports Headlines</h4>
     <ul>
-        <li>10:00 AM | 65 DEGREES | CLEAR SKIES</li>
-        <li>01:00 PM | 70 DEGREES | CLEAR SKIES</li>
-        <li>04:00 PM | 75 DEGREES | CLEAR SKIES</li>
-        <li>07:00 PM | 67 DEGREES | PARTLY CLOUDY</li>
-        <li>10:00 PM | 56 DEGREES | CLEAR SKIES</li>
+        <li>Ferrari wins the Italian Grand Prix with Leclerc</li>
+        <li>India dominates England in one-off test</li>
+        <li>Mets win the world series</li>
+        <li>Giants win the Super Bowl</li>
     </ul>
     """
 
