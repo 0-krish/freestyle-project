@@ -11,7 +11,6 @@ def news_headlines_api():
     print("NEWS HEADLINES (API)...")
     print("URL PARAMS:", dict(request.args))
 
-    #country_code = request.args["country_code"] # the dict might not have this key all the time
     country_code = request.args.get("country_code") or "US"
     news_category = request.args.get("news_category") or "business"
 
