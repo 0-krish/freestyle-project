@@ -25,6 +25,11 @@ def news_form():
     print("NEWS HEADLINES...")
     return render_template("news_form.html")
 
+@news_routes.route("/news/headline_options")
+def news_headline_options():
+    print("NEWS HEADLINE OPTIONS...")
+    return render_template("news_headlines_options.html")
+
 @news_routes.route("/news/headlines", methods=["GET", "POST"])
 def news_headlines():
     print("NEWS HEADLINES...")
