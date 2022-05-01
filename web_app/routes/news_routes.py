@@ -20,15 +20,35 @@ def news_headlines_api():
     else:
         return jsonify({"message":"Invalid Inputs. Please try again."}), 404
 
-@news_routes.route("/news/form")
+@news_routes.route("/news/form",methods=["GET", "POST"])
 def news_form():
     print("NEWS HEADLINES...")
-    return render_template("news_form.html")
 
-@news_routes.route("/news/headline_options")
+    if request.method == "GET":
+        return render_template("news_form.html")
+
+    elif request.method == "POST": # the form will send a POST
+        print("URL PARAMS:", dict(request.args))
+        request_data = dict(request.args)
+        return render_template("news_form.html")
+        # change above
+        # this needs to link to email service
+
+@news_routes.route("/news/headline_options", methods=["GET", "POST"])
 def news_headline_options():
     print("NEWS HEADLINE OPTIONS...")
-    return render_template("news_headlines_options.html")
+
+    if request.method == "GET":
+        print("URL PARAMS:", dict(request.args))
+        request_data = dict(request.args)
+        return render_template("news_headlines_options.html")
+
+    elif request.method == "POST": # the form will send a POST
+        print("FORM DATA:", dict(request.form))
+        request_data = dict(request.form)
+        results = get_headlines(country_code=request_data['country'], news_category=request_data['category1'])
+        return render_template("news_headlines.html", country_code=request_data['country'],
+                               news_category=request_data['category1'], results=results)
 
 @news_routes.route("/news/headlines", methods=["GET", "POST"])
 def news_headlines():
