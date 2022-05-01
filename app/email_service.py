@@ -59,6 +59,6 @@ if __name__ == "__main__":
     </ul>
     """
 
-    reciepient = "ks1730@georgetown.edu"
+    reciepient = SENDER_EMAIL_ADDRESS
 
     send_email(example_subject, example_html, reciepient)
