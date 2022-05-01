@@ -11,10 +11,10 @@ load_dotenv()
 
 NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
-def set_user_preferences():
+def set_user_preferences(country_code, news_category):
 
-    country_code = "us"
-    news_category = "business"  # business, entertainment, general, health, science, sports, technology
+    country_code = country_code or "us"
+    news_category = news_category or "business" # business, entertainment, general, health, science, sports, technology
 
     return country_code, news_category
 

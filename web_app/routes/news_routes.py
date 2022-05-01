@@ -1,6 +1,6 @@
 # web_app/routes/news_routes.py
 
-from flask import Blueprint, request, jsonify, render_template, redirect, flash # FYI new imports
+from flask import Blueprint, request, jsonify, render_template, redirect, flash
 
 from app.news_service import get_headlines
 
@@ -30,7 +30,13 @@ def news_form():
     elif request.method == "POST": # the form will send a POST
         print("URL PARAMS:", dict(request.args))
         request_data = dict(request.args)
-        return render_template("news_form.html")
+
+        if request.method:
+            flash("Subscription Successful!", "success")
+        else:
+            flash("Invalid Inputs. Please try again!", "danger")
+            return redirect("news_form.html")
+
         # change above
         # this needs to link to email service
 
@@ -50,16 +56,16 @@ def news_headline_options():
         return render_template("news_headlines.html", country_code=request_data['country'],
                                news_category=request_data['category1'], results=results)
 
-@news_routes.route("/news/headlines", methods=["GET", "POST"])
+@news_routes.route("/news/headlines")
 def news_headlines():
     print("NEWS HEADLINES...")
 
-    if request.method == "GET":
-        print("URL PARAMS:", dict(request.args))
-        request_data = dict(request.args)
-    elif request.method == "POST": # the form will send a POST
-        print("FORM DATA:", dict(request.form))
-        request_data = dict(request.form)
+    # if request.method == "GET":
+    #     print("URL PARAMS:", dict(request.args))
+    #     request_data = dict(request.args)
+    # elif request.method == "POST": # the form will send a POST
+    #     print("FORM DATA:", dict(request.form))
+    #     request_data = dict(request.form)
 
     country_code = request.args.get("country_code") or "US"
     news_category = request.args.get("news_category") or "business"
