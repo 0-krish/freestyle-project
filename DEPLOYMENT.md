@@ -14,14 +14,12 @@ git remote -v
 heroku config 
 
 ## set environment variables:
-heroku config:set APP_ENV="production"
 
 heroku config:set SENDGRID_API_KEY="_________"
 heroku config:set SENDER_EMAIL_ADDRESS="someone@gmail.com"
 
-heroku config:set COUNTRY_CODE="US"
-heroku config:set ZIP_CODE="20057"
-heroku config:set USER_NAME="Jon Snow"
+heroku config:set NEWS_API_KEY="_____"
+heroku config:set "SECRET_KEY"="____"
 
 ## Deploying
 git push heroku main
