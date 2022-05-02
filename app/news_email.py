@@ -7,6 +7,8 @@ from datetime import date
 from app.news_service import get_headlines, set_user_preferences
 from app.email_service import send_email
 
+from IPython.display import Image, display 
+
 load_dotenv()
 
 if __name__ == "__main__":
@@ -44,19 +46,24 @@ if __name__ == "__main__":
     html += f"<p>{todays_date}</p>"
 
     html += f"<h1>News Headlines for {news_category.title()}</h1>"
-    html += "<ul>"
+    
 
     for headline in final_news_data["articles"]:
+        html += f"<br>"
+        if headline['urlToImage'] is not None: 
+            #html += f"<img src={headline['urlToImage']} alt={headline['title']}>"
+            image_url = headline["urlToImage"]
+            image_height = 168.75
+            image_width = 300
+            html += f"<img src={image_url} alt={headline['title']} width={image_width} height={image_height}>"
+            html += f"<br>"
         html += f"<br>"
         html += f"<strong>{headline['title']}</strong>"
         if headline['description'] is not None:
             html += f"<br>"
             html += f"<p>{headline['description']}<p>"
-        if headline['urlToImage'] is not None: 
-            html += f"<img src={headline['urlToImage']} alt={headline['title']} width="500" height="600">"
-        html += f"<br>"
+        html += f"<hr>"  
 
-    html += "</ul>"
 
     subject_line = "[News Headlines] In " + news_category.title() + " Today"
 
