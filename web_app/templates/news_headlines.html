@@ -5,14 +5,15 @@
 
     <h2>News Headlines for {{ news_category.title() }}</h2>
 
-    <!-- TODO: consider using a table instead of a list -->
-    <!-- TODO: consider adding images using the provided icon urls -->
-    <ul>
-
+    <table>
     {% for headline in results["articles"] %}
-        <li>{{ headline["title"] }}</li>
+        <tr>
+            <td>
+                <a href="{{ headline['url'] }}">{{ headline["title"] }}</a>
+            </td>
+        </tr>
     {% endfor %}
-    </ul>
+    </table>
 
     <form action="/news/headline_options">
         <button>Back</button>
