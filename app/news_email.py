@@ -43,14 +43,18 @@ if __name__ == "__main__":
 
     html += f"<p>{todays_date}</p>"
 
-    html += f"<h4>News Headlines for {news_category}</h4>"
+    html += f"<h1>News Headlines for {news_category.title()}</h1>"
     html += "<ul>"
 
     for headline in final_news_data["articles"]:
-        html += f"<li>{headline['title']}</li>"
+        html += f"<br>"
+        html += f"<strong>{headline['title']}</strong>"
         if headline['description'] is not None:
-            html += f"<li>{headline['description']}<li>"
-        html += f"<li><li>"
+            html += f"<br>"
+            html += f"<p>{headline['description']}<p>"
+        if headline['urlToImage'] is not None: 
+            html += f"<img src={headline['urlToImage']} alt={headline['title']} width="500" height="600">"
+        html += f"<br>"
 
     html += "</ul>"
 
