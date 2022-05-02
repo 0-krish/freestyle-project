@@ -1,3 +1,4 @@
+
 # app/news_email.py
 
 import os
@@ -46,6 +47,7 @@ if __name__ == "__main__":
     html += f"<p>{todays_date}</p>"
 
     html += f"<h1>News Headlines for {news_category.title()}</h1>"
+    
 
     for headline in final_news_data["articles"]:
         html += f"<br>"
@@ -57,6 +59,12 @@ if __name__ == "__main__":
             html += f"<img src={image_url} alt={headline['title']} width={image_width} height={image_height}>"
             html += f"<br>"
         html += f"<br>"
+        html += f"<strong>{headline['title']}</strong>"
+        if headline['description'] is not None:
+            html += f"<br>"
+            html += f"<p>{headline['description']}<p>"
+        html += f"<hr>"  
+
 
     subject_line = "[News Headlines] In " + news_category.title() + " Today"
 
