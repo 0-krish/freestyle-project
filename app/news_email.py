@@ -30,10 +30,6 @@ if __name__ == "__main__":
 
     for headline in final_news_data["articles"]:
         print("-----------")
-        #  headline_image_url = headline["urlToImage"]
-        #  image_object = Image.open(headline_image_url)
-        #  image_object = Image.open(requests.get(headline_image_url, stream=True).raw)
-        #  image_object.show()
         print(headline["title"])
         if headline["description"] is not None:
             print(headline["description"])
@@ -51,7 +47,6 @@ if __name__ == "__main__":
     for headline in final_news_data["articles"]:
         html += f"<br>"
         if headline['urlToImage'] is not None: 
-            #html += f"<img src={headline['urlToImage']} alt={headline['title']}>"
             image_url = headline["urlToImage"]
             image_height = 168.75
             image_width = 300
