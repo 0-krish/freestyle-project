@@ -5,6 +5,8 @@
 
     <h2>News Headlines for {{ news_category.title() }}</h2>
 
+    <br>
+
     <table>
     {% for headline in results["articles"] %}
         <tr>
@@ -14,6 +16,8 @@
         </tr>
     {% endfor %}
     </table>
+
+    <br>
 
     <form action="/news/headline_options">
         <button>Back</button>
