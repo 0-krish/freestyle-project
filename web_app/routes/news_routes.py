@@ -3,6 +3,7 @@
 from flask import Blueprint, request, jsonify, render_template, redirect, flash
 
 from app.news_service import get_headlines
+from app.news_email import send_news_email
 
 news_routes = Blueprint("news_routes", __name__)
 
@@ -78,3 +79,31 @@ def news_headlines():
     else:
         flash("Incorrect Inputs. Please try again!", "danger")
         return redirect("/news/headlines")
+
+@news_routes.route("/news/send_email", methods=["GET", "POST"])
+def news_send_email():
+    print("SEND NEWS HEADLINES EMAIL...")
+
+    if request.method == "GET":
+        print("GET METHOD ON SEND NEWS", dict(request.args))
+        return redirect("/news/form")
+
+    elif request.method == "POST":  # the form will send a POST
+        print("FORM DATA:", dict(request.form))
+        request_data = dict(request.form)
+        email_result = send_news_email(request_data['user_name'], request_data['user_email'],
+                                       request_data['country'], request_data['category1'])
+
+        if email_result:
+            flash("News Headlines Email Successfully Sent!", "success")
+            results = get_headlines(get_country_code=request_data['country'],
+                                    get_news_category=request_data['category1'])
+            return render_template("news_headlines.html", country_code=request_data['country'],
+                                   news_category=request_data['category1'], results=results)
+        else:
+            flash("Incorrect Inputs. Please try again!", "danger")
+            return redirect("/news/form")
+
+
+
+

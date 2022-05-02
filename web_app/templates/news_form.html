@@ -8,10 +8,27 @@
     <p>Request customized news delivered right to your inbox!</p>
     <br>
 
-    <form action="/news/headlines">
+    <form action="/news/send_email" method="POST">
 
-       
-        <label>News Customization Options:</label>
+        <label><strong>Your Information:</strong></label>
+
+        <br>
+        <br>
+
+        <label for="country">What is your name? </label>
+        <input type="text" id="user_name" name="user_name">
+
+        <br>
+        <br>
+
+        <label for="country">What is your email address? </label>
+        <input type="email" id="user_email" name="user_email">
+
+        <br>
+        <br>
+        <br>
+
+        <label><strong>News Customization Options:</strong></label>
 
         <br>
         <br>
@@ -78,7 +95,7 @@
 
         <br>
         <br>
-        
+
         <label for="category1">Choose the news cateogry you're most interested in:</label>
 
         <select name="category1" id="category1">
@@ -91,39 +108,39 @@
             <option value="technology">Technology</option>
         </select>
 
-        <br>
-        <br>
+<!--        <br>-->
+<!--        <br>-->
 
-        <label for="category2">Choose the news cateogry you're second most interested in:</label>
+<!--        <label for="category2">Choose the news cateogry you're second most interested in:</label>-->
 
-        <select name="category2" id="category2">
-            <option value="business">Business</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="general">General</option>
-            <option value="health">Health</option>
-            <option value="science">Science</option>
-            <option value="sports">Sports</option>
-            <option value="technology">Technology</option>
-            <option value="None">I'm only interested in the first topic I chose</option>
-        </select>
-        
-        <br>
-        <br>
+<!--        <select name="category2" id="category2">-->
+<!--            <option value="business">Business</option>-->
+<!--            <option value="entertainment">Entertainment</option>-->
+<!--            <option value="general">General</option>-->
+<!--            <option value="health">Health</option>-->
+<!--            <option value="science">Science</option>-->
+<!--            <option value="sports">Sports</option>-->
+<!--            <option value="technology">Technology</option>-->
+<!--            <option value="None">I'm only interested in the first topic I chose</option>-->
+<!--        </select>-->
+<!--        -->
+<!--        <br>-->
+<!--        <br>-->
 
-        <label for="category3">Choose the news cateogry you're third most interested in:</label>
+<!--        <label for="category3">Choose the news cateogry you're third most interested in:</label>-->
 
-        <select name="category3" id="category3">
-            <option value="business">Business</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="general">General</option>
-            <option value="health">Health</option>
-            <option value="science">Science</option>
-            <option value="sports">Sports</option>
-            <option value="technology">Technology</option>
-            <option value="None">I'm only interested in the first topic I chose</option>
-            <option value="None">I'm only interested in the first two topics I chose</option>
-        </select>
-        
+<!--        <select name="category3" id="category3">-->
+<!--            <option value="business">Business</option>-->
+<!--            <option value="entertainment">Entertainment</option>-->
+<!--            <option value="general">General</option>-->
+<!--            <option value="health">Health</option>-->
+<!--            <option value="science">Science</option>-->
+<!--            <option value="sports">Sports</option>-->
+<!--            <option value="technology">Technology</option>-->
+<!--            <option value="None">I'm only interested in the first topic I chose</option>-->
+<!--            <option value="None">I'm only interested in the first two topics I chose</option>-->
+<!--        </select>-->
+
         <br>
         <br>
         <br>
