@@ -1,4 +1,3 @@
-
 # app/news_email.py
 
 import os
@@ -7,8 +6,6 @@ from datetime import date
 
 from app.news_service import get_headlines, set_user_preferences
 from app.email_service import send_email
-
-from IPython.display import Image, display 
 
 load_dotenv()
 
