@@ -8,8 +8,6 @@ from datetime import date
 from app.news_service import get_headlines, set_user_preferences
 from app.email_service import send_email
 
-from IPython.display import Image, display 
-
 load_dotenv()
 
 if __name__ == "__main__":
@@ -43,18 +41,19 @@ if __name__ == "__main__":
     html += f"<p>{todays_date}</p>"
 
     html += f"<h1>News Headlines for {news_category.title()}</h1>"
+    html += f"<hr>"
     
+    #<a href="{{ headline['url'] }}">{{ headline["title"] }}</a>
 
     for headline in final_news_data["articles"]:
-        html += f"<br>"
+        #html += f"<h2>{headline['title']}</h2>"
+        html += f"<a href={headline['url']} style='color:black'><h2>{headline['title']}</h2></a>"
         if headline['urlToImage'] is not None: 
             image_url = headline["urlToImage"]
             image_height = 168.75
             image_width = 300
-            html += f"<img src={image_url} alt={headline['title']} width={image_width} height={image_height}>"
-            html += f"<br>"
-        html += f"<br>"
-        html += f"<strong>{headline['title']}</strong>"
+            #fix issues with centering 
+            html += f"<img src={image_url} alt={headline['title']} class='center' width={image_width} height={image_height}>"
         if headline['description'] is not None:
             html += f"<br>"
             html += f"<p>{headline['description']}<p>"
