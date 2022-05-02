@@ -14,7 +14,7 @@ def news_headlines_api():
     country_code = request.args.get("country_code") or "US"
     news_category = request.args.get("news_category") or "business"
 
-    results = get_headlines(country_code=country_code, news_category=news_category)
+    results = get_headlines(get_country_code=country_code, get_news_category=news_category)
     if results:
         return jsonify(results)
     else:
@@ -52,7 +52,7 @@ def news_headline_options():
     elif request.method == "POST": # the form will send a POST
         print("FORM DATA:", dict(request.form))
         request_data = dict(request.form)
-        results = get_headlines(country_code=request_data['country'], news_category=request_data['category1'])
+        results = get_headlines(get_country_code=request_data['country'], get_news_category=request_data['category1'])
         return render_template("news_headlines.html", country_code=request_data['country'],
                                news_category=request_data['category1'], results=results)
 
@@ -70,7 +70,7 @@ def news_headlines():
     country_code = request.args.get("country_code") or "US"
     news_category = request.args.get("news_category") or "business"
 
-    results = get_headlines(country_code=country_code, news_category=news_category)
+    results = get_headlines(get_country_code=country_code, get_news_category=news_category)
     if results:
         flash("News Headlines Generated Successfully!", "success")
         return render_template("news_headlines.html", country_code=country_code,
