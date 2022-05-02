@@ -10,7 +10,7 @@
     <ul>
 
     {% for headline in results["articles"] %}
-        <li>{{ headline["title"] }}</li>
+        <li><a href="{{ headline['url'] }}">{{ headline["title"] }}</a></li>
     {% endfor %}
     </ul>
 
