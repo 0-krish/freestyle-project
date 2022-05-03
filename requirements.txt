@@ -14,6 +14,10 @@ requests
 flask
 gunicorn
 
+# for Google Sheets integration
+gspread==3.6.0
+oauth2client==4.1.3
+
 #
 # TEST
 #

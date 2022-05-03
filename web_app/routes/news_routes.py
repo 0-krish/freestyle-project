@@ -4,6 +4,7 @@ from flask import Blueprint, request, jsonify, render_template, redirect, flash
 
 from app.news_service import get_headlines
 from app.news_email import send_news_email
+from app.data_storage import write_sheet
 
 news_routes = Blueprint("news_routes", __name__)
 
@@ -32,14 +33,14 @@ def news_form():
         print("URL PARAMS:", dict(request.args))
         request_data = dict(request.args)
 
-        if request.method:
-            flash("Subscription Successful!", "success")
-        else:
-            flash("Invalid Inputs. Please try again!", "danger")
-            return redirect("news_form.html")
+        # if request_data:
+        #     write_sheet(request_data['user_name'], request_data['user_email'],
+        #                 request_data['country'], request_data['category1'])
+        #     flash("Subscription Successful!", "success")
+        # else:
+        #     flash("Invalid Inputs. Please try again!", "danger")
+        #     return redirect("news_form.html")
 
-        # change above
-        # this needs to link to email service
 
 @news_routes.route("/news/headline_options", methods=["GET", "POST"])
 def news_headline_options():
@@ -95,15 +96,16 @@ def news_send_email():
                                        request_data['country'], request_data['category1'])
 
         if email_result:
-            flash("News Headlines Email Successfully Sent!", "success")
             results = get_headlines(get_country_code=request_data['country'],
                                     get_news_category=request_data['category1'])
+
+            write_sheet(request_data['user_name'], request_data['user_email'],
+                        request_data['country'], request_data['category1'])
+
+            flash("Subscription Successful!", "success")
+
             return render_template("news_headlines.html", country_code=request_data['country'],
                                    news_category=request_data['category1'], results=results)
         else:
             flash("Incorrect Inputs. Please try again!", "danger")
             return redirect("/news/form")
-
-
-
-

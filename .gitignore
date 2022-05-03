@@ -1,5 +1,10 @@
 # .gitignore
 
+# ignore env file
 .env
 
+# ignore cache
 __pycache__
+
+# ignore google credentials
+google-credentials.json
