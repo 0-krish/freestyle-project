@@ -1,2 +1,2 @@
 web: gunicorn "web_app:create_app()"
-echo ${GOOGLE_CREDENTIALS} > app/auth/google-credentials.json
+echo ${GOOGLE_CREDENTIALS} > app/google-credentials.json
