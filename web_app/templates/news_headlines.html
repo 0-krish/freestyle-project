@@ -5,15 +5,22 @@
 
     <h2>News Headlines for {{ news_category.title() }}</h2>
 
+    <hr>
+
     <br>
 
     <table>
     {% for headline in results["articles"] %}
-        <tr>
-            <td>
-                <a href="{{ headline['url'] }}">{{ headline["title"] }}</a>
-            </td>
-        </tr>
+        
+        <a href="{{ headline['url'] }}"><h4>{{ headline["title"] }}</h4></a>
+        <!-- <img src={image_url} alt={headline['title']} class='center' width={image_width} height={image_height}>" -->
+        
+        <p style="text-align:center;"><img src="{{ headline['urlToImage'] }}" alt="{{ headline['title'] }}" class="center" width="600" height="337.5" ></p>
+
+        <p>{{ headline["description"] }} </p>
+
+        <hr>
+
     {% endfor %}
     </table>
 
@@ -24,3 +31,25 @@
     </form>
 
 {% endblock %}
+
+<!-- if headline['description'] is not None:
+            html += f"<br>"
+            html += f"<p>{headline['description']}<p>" -->
+
+<!-- {% for forecast in results["hourly_forecasts"] %}
+<li>{{ forecast["timestamp"] }} | {{ forecast["temp"] }} | {{ forecast["conditions"].upper() }}</li>
+{% endfor %} -->
+
+<!-- for headline in final_news_data["articles"]:
+        #html += f"<h2>{headline['title']}</h2>"
+        html += f"<a href={headline['url']} style='color:black'><h2>{headline['title']}</h2></a>"
+        if headline['urlToImage'] is not None:
+            image_url = headline["urlToImage"]
+            image_height = 168.75
+            image_width = 300
+            #fix issues with centering
+            html += f"<img src={image_url} alt={headline['title']} class='center' width={image_width} height={image_height}>"
+        if headline['description'] is not None:
+            html += f"<br>"
+            html += f"<p>{headline['description']}<p>"
+        html += f"<hr>" -->
