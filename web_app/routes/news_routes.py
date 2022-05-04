@@ -33,14 +33,6 @@ def news_form():
         print("URL PARAMS:", dict(request.args))
         request_data = dict(request.args)
 
-        # if request_data:
-        #     write_sheet(request_data['user_name'], request_data['user_email'],
-        #                 request_data['country'], request_data['category1'])
-        #     flash("Subscription Successful!", "success")
-        # else:
-        #     flash("Invalid Inputs. Please try again!", "danger")
-        #     return redirect("news_form.html")
-
 
 @news_routes.route("/news/headline_options", methods=["GET", "POST"])
 def news_headline_options():
@@ -62,13 +54,6 @@ def news_headline_options():
 def news_headlines():
     print("NEWS HEADLINES...")
 
-    # if request.method == "GET":
-    #     print("URL PARAMS:", dict(request.args))
-    #     request_data = dict(request.args)
-    # elif request.method == "POST": # the form will send a POST
-    #     print("FORM DATA:", dict(request.form))
-    #     request_data = dict(request.form)
-
     country_code = request.args.get("country_code") or "US"
     news_category = request.args.get("news_category") or "business"
 
@@ -80,6 +65,7 @@ def news_headlines():
     else:
         flash("Incorrect Inputs. Please try again!", "danger")
         return redirect("/news/headlines")
+
 
 @news_routes.route("/news/send_email", methods=["GET", "POST"])
 def news_send_email():

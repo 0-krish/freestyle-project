@@ -1,6 +1,5 @@
 # app/news_email.py
 
-import os
 from dotenv import load_dotenv
 from datetime import date
 
@@ -91,14 +90,10 @@ if __name__ == "__main__":
     todays_date = date.today().strftime('%A, %B %d, %Y')
 
     html = ""
-    # html += f"<h3>Good Morning, {USER_NAME}!</h3>"
-
     html += f"<p>{todays_date}</p>"
 
     html += f"<h1>News Headlines for {news_category.title()}</h1>"
     html += f"<hr>"
-    
-    #<a href="{{ headline['url'] }}">{{ headline["title"] }}</a>
 
     for headline in final_news_data["articles"]:
         #html += f"<h2>{headline['title']}</h2>"
