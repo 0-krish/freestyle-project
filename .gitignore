@@ -7,4 +7,4 @@
 __pycache__
 
 # ignore google credentials
-google-credentials.json
+app/google-credentials.json
