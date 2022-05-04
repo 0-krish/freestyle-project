@@ -1,11 +1,9 @@
-# get_api_data.py
+# news_service.py
 
 import os
 from dotenv import load_dotenv
 import json
 import requests
-#  from PIL import Image
-#  from tkinter import *
 
 load_dotenv()
 
@@ -36,7 +34,7 @@ def get_headlines(get_country_code, get_news_category):
 
 if __name__ == "__main__":
 
-    # print(f"RUNNING THE WEATHER SERVICE IN {APP_ENV.upper()} MODE...")
+    print(f"RUNNING THE NEWS SERVICE...")
 
     # CAPTURE INPUTS
 
@@ -55,10 +53,6 @@ if __name__ == "__main__":
 
     for headline in final_news_data["articles"]:
         print("-----------")
-        #  headline_image_url = headline["urlToImage"]
-        #  image_object = Image.open(headline_image_url)
-        #  image_object = Image.open(requests.get(headline_image_url, stream=True).raw)
-        #  image_object.show()
         print(headline["title"])
         if headline["description"] is not None:
             print(headline["description"])

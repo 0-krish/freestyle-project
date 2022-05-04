@@ -1,7 +1,7 @@
 import os
 import pytest
 
-from app.data_storage import load_auth, read_sheet, write_sheet
+from app.data_storage import read_sheet, write_sheet
 
 CI_ENV = os.getenv("CI") == "true"
 
@@ -14,4 +14,5 @@ def test_data_storage():
                                                                     "Category": "general",
                                                                     }
 
-    
+    test_dict = read_sheet()
+    assert list(test_dict[0].keys()) == ['Name', 'Email', 'Country', 'Category']

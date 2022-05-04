@@ -13,6 +13,8 @@ def load_auth():
     load_dotenv()
     DOCUMENT_ID = os.getenv("GOOGLE_SHEET_ID", default="OOPS")
     SHEET_NAME = os.getenv("SHEET_NAME", default="OOPS")
+    APP_MODE = os.getenv("APP_MODE", default="OOPS")
+
 
     # code adapted from https://github.com/prof-rossetti/intro-to-python/blob/main/notes/python/packages/gspread.md
 
@@ -24,11 +26,12 @@ def load_auth():
 
     # an OS-agnostic (Windows-safe) way to reference the "auth/google-credentials.json" filepath:
 
-    # To run locally: use first line of code with filepaths
-    # to run on Heroku, use the second line
-    CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "google-credentials.json")
-    # CREDENTIALS_FILEPATH = "google-credentials.json"
-
+    # based on file path configuration locally and on heroku
+    # filepath is in app directory locally, and configured to be created in the root on heroku
+    if APP_MODE == "Development":
+        CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "google-credentials.json")
+    elif APP_MODE == "Production":
+        CREDENTIALS_FILEPATH = "google-credentials.json"
 
     AUTH_SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets", #> Allows read/write access to the user's sheets and their properties.

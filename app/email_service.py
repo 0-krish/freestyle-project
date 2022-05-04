@@ -29,13 +29,13 @@ def send_email(subject="[News Headlines] This is a test", html="<p>Hello World</
         response = client.send(message)
         print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
         print(response.status_code) #> 202 indicates SUCCESS
-        return response
+        return response.status_code
     except Exception as e:
         print("OOPS", type(e), e)
         return None
 
+def send_test_email():
 
-if __name__ == "__main__":
     example_subject = "[News Headlines] This is a test"
 
     example_html = f"""
@@ -61,4 +61,11 @@ if __name__ == "__main__":
 
     reciepient = SENDER_EMAIL_ADDRESS
 
-    send_email(example_subject, example_html, reciepient)
+    status = send_email(example_subject, example_html, reciepient)
+
+    return status
+
+
+if __name__ == "__main__":
+
+    send_test_email()
