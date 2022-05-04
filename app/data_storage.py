@@ -26,8 +26,8 @@ def load_auth():
 
     # To run locally: use first line of code with filepaths
     # to run on Heroku, use the second line
-    # CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "google-credentials.json")
-    CREDENTIALS_FILEPATH = "google-credentials.json"
+    CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "google-credentials.json")
+    # CREDENTIALS_FILEPATH = "google-credentials.json"
 
 
     AUTH_SCOPE = [
@@ -106,6 +106,8 @@ def write_sheet(user_name, user_email, user_country, user_category):
     print("RESPONSE:", type(response)) #> dict
     print(response) #> {'spreadsheetId': '____', 'updatedRange': "'Products-2021'!A9:E9", 'updatedRows': 1,
                     # 'updatedColumns': 5, 'updatedCells': 5}
+
+    return new_row
 
 
 if __name__ == "__main__":
