@@ -23,7 +23,10 @@ def load_auth():
     # ... and FYI there is also a newer, more high level way to do this (see the docs)
 
     # an OS-agnostic (Windows-safe) way to reference the "auth/google-credentials.json" filepath:
-    #CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "google-credentials.json")
+
+    # To run locally: use first line of code with filepaths
+    # to run on Heroku, use the second line
+    # CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "google-credentials.json")
     CREDENTIALS_FILEPATH = "google-credentials.json"
 
 
