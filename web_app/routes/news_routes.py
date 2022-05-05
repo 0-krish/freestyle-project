@@ -10,6 +10,10 @@ news_routes = Blueprint("news_routes", __name__)
 
 @news_routes.route("/api/news/headlines.json")
 def news_headlines_api():
+   
+    '''
+    Gets News API data for a given country and news category via the "/api/news/headlines.json" route
+    '''
     print("NEWS HEADLINES (API)...")
     print("URL PARAMS:", dict(request.args))
 
@@ -24,6 +28,11 @@ def news_headlines_api():
 
 @news_routes.route("/news/form",methods=["GET", "POST"])
 def news_form():
+
+    '''
+    Via the "/news/form" route, renders the "news_form.html" template if the request method is "GET", otherwise the form sends a "POST"  
+    '''
+
     print("NEWS HEADLINES...")
 
     if request.method == "GET":
@@ -36,6 +45,11 @@ def news_form():
 
 @news_routes.route("/news/headline_options", methods=["GET", "POST"])
 def news_headline_options():
+
+    '''
+    Via the "/news/headline_options" route, renders the "news_headlines_options.html" template if request method is "GET". If request method is "POST", renders "news_headlines.html" template.
+    '''
+
     print("NEWS HEADLINE OPTIONS...")
 
     if request.method == "GET":
@@ -52,6 +66,11 @@ def news_headline_options():
 
 @news_routes.route("/news/headlines")
 def news_headlines():
+
+    '''
+    Via the "/news/headlines" route, renders  the "news_headlines.html", populated with headlines based on the user specified country and news category.
+    '''
+
     print("NEWS HEADLINES...")
 
     country_code = request.args.get("country_code") or "US"
@@ -69,6 +88,12 @@ def news_headlines():
 
 @news_routes.route("/news/send_email", methods=["GET", "POST"])
 def news_send_email():
+
+    '''
+    Via /news/send_email" route, stores the user data onto a sheet so that they can subscibe to the email service. 
+
+    Redirects back to /news/form is request method is "GET", sends email and stores user inputs if request method is "POST"
+    '''
     print("SEND NEWS HEADLINES EMAIL...")
 
     if request.method == "GET":

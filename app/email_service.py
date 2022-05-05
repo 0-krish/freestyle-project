@@ -36,6 +36,10 @@ def send_email(subject="[News Headlines] This is a test", html="<p>Hello World</
 
 def send_test_email():
 
+    """
+    Sends a test email to the address linked to the admin's sender address.
+    """
+
     example_subject = "[News Headlines] This is a test"
 
     example_html = f"""

@@ -14,6 +14,11 @@ NEWS_CATEGORY = os.getenv("NEWS_CATEGORY")
 
 def set_user_preferences():
 
+    """
+    Returns the country and category of choice for the user. 
+
+    """
+
     set_country_code = COUNTRY_CODE or "us"
     set_news_category = NEWS_CATEGORY or "business"  # business, entertainment, general, health, science, sports, technology
 
@@ -21,6 +26,12 @@ def set_user_preferences():
 
 
 def get_headlines(get_country_code, get_news_category):
+
+    """
+    Fetches data from News API and puts it into news_data.
+
+    Fetched data include information related to the top headlines for the user selected category and country.
+    """
 
     news_type = "top-headlines"  # default, no alternatives serviced
     request_url = "https://newsapi.org/v2/" + news_type + "?country=" + get_country_code + "&category=" + \

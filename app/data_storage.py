@@ -10,6 +10,11 @@ load_dotenv()
 
 def load_auth():
 
+    '''
+    Authorizes an API client to interface with the Google Sheets API and accesses the sheet within the document to fetch the sheet's data.
+    '''
+
+
     load_dotenv()
     DOCUMENT_ID = os.getenv("GOOGLE_SHEET_ID", default="OOPS")
     SHEET_NAME = os.getenv("SHEET_NAME", default="OOPS")
@@ -53,6 +58,10 @@ def load_auth():
 
 def read_sheet():
 
+    '''
+    Reads the fetched data from the sheet into a dictionary called 'users_dict'
+    '''
+
     sheet, rows = load_auth()
 
     users_dict = []
@@ -75,6 +84,9 @@ def read_sheet():
 
 def write_sheet(user_name, user_email, user_country, user_category):
 
+    '''
+    Writes user data to a google sheet
+    '''
     sheet, rows = load_auth()
 
     #

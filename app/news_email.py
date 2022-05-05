@@ -10,6 +10,12 @@ load_dotenv()
 
 def send_news_email(user_name, user_email, country_code, news_category):
 
+    """
+    Sends an email with the specified subject and html contents to the specified recipient.
+
+    Email contents include the day's top headlines for the user specified News Category.
+    """
+
     # CAPTURE INPUTS
 
     # country_code, news_category = set_user_preferences()
