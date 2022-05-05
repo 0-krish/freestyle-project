@@ -10,12 +10,14 @@ load_dotenv()
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 SENDER_EMAIL_ADDRESS = os.getenv("SENDER_EMAIL_ADDRESS")
 
-def send_email(subject="[News Headlines] This is a test", html="<p>Hello World</p>", recipient_address=SENDER_EMAIL_ADDRESS):
+def send_email(subject="[News Headlines] This is a test", html="<p>Hello World</p>",
+               recipient_address=SENDER_EMAIL_ADDRESS):
     """
     Sends an email with the specified subject and html contents to the specified recipient,
 
     If recipient is not specified, sends to the admin's sender address by default.
     """
+
     client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
     print("CLIENT:", type(client))
     print("SUBJECT:", subject)
