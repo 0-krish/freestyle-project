@@ -44,7 +44,7 @@ def send_news_email(user_name, user_email, country_code, news_category):
 
     html += f"<p>{todays_date}</p>"
 
-    html += f"<h1>News Headlines for {news_category.title()}</h1>"
+    html += f"<h1>{news_category.title()} News - The Times of Python</h1>"
     html += f"<hr>"
 
     #<a href="{{ headline['url'] }}">{{ headline["title"] }}</a>
@@ -63,7 +63,7 @@ def send_news_email(user_name, user_email, country_code, news_category):
             html += f"<p>{headline['description']}<p>"
         html += f"<hr>"
 
-    subject_line = "[News Headlines] In " + news_category.title() + " Today"
+    subject_line = news_category.title() + " News - The Times of Python"
 
     send_email(subject=subject_line, html=html, recipient_address=user_email)
 
@@ -98,7 +98,7 @@ if __name__ == "__main__":
     html = ""
     html += f"<p>{todays_date}</p>"
 
-    html += f"<h1>News Headlines for {news_category.title()}</h1>"
+    html += f"<h1>{news_category.title()} News - The Times of Python</h1>"
     html += f"<hr>"
 
     for headline in final_news_data["articles"]:
@@ -116,7 +116,7 @@ if __name__ == "__main__":
         html += f"<hr>"  
 
 
-    subject_line = "[News Headlines] In " + news_category.title() + " Today"
+    subject_line = subject_line = news_category.title() + " News - The Times of Python"
 
     send_email(subject=subject_line, html=html)
 
