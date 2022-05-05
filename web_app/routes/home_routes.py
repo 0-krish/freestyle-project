@@ -7,5 +7,8 @@ home_routes = Blueprint("home_routes", __name__)
 @home_routes.route("/")
 @home_routes.route("/home")
 def index():
+    '''
+    Renders the "home.html" template
+    '''
     print("HOME...")
     return render_template("home.html")
