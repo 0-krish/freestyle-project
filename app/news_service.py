@@ -20,7 +20,8 @@ def set_user_preferences():
     """
 
     set_country_code = COUNTRY_CODE or "us"
-    set_news_category = NEWS_CATEGORY or "business"  # business, entertainment, general, health, science, sports, technology
+    set_news_category = NEWS_CATEGORY or "business"
+    # business, entertainment, general, health, science, sports, technology
 
     return set_country_code, set_news_category
 
