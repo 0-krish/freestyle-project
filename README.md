@@ -89,9 +89,14 @@ To run the web app locally:
   - ```flask run```
     - ... if `export` doesn't work for you, try `set` instead
 
-## Testing
+### Testing
 ```pytest```
 
 In CI mode:
 ```CI=true pytest```
+
+### Deployment
+
+See the DEPLOYMENT.md file to learn more about deploying this app to Heroku
+
 
