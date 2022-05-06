@@ -36,8 +36,6 @@ def load_auth():
     # filepath is in app directory locally, and configured to be created in the root on heroku
     if APP_MODE == "development":
         CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "google-credentials.json")
-    elif APP_MODE == "deployment":
-        CREDENTIALS_FILEPATH = "google-credentials.json"
     else:
         CREDENTIALS_FILEPATH = "google-credentials.json"
 
