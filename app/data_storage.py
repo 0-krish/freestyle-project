@@ -11,7 +11,8 @@ load_dotenv()
 def load_auth():
 
     '''
-    Authorizes an API client to interface with the Google Sheets API and accesses the sheet within the document to fetch the sheet's data.
+    Authorizes an API client to interface with the Google Sheets API and accesses the sheet within
+    the document to fetch the sheet's data.
     '''
 
 
@@ -33,14 +34,16 @@ def load_auth():
 
     # based on file path configuration locally and on heroku
     # filepath is in app directory locally, and configured to be created in the root on heroku
-    if APP_MODE == "Development":
+    if APP_MODE == "development":
         CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "google-credentials.json")
-    elif APP_MODE == "Production":
+    else:
         CREDENTIALS_FILEPATH = "google-credentials.json"
 
     AUTH_SCOPE = [
-        "https://www.googleapis.com/auth/spreadsheets", #> Allows read/write access to the user's sheets and their properties.
-        "https://www.googleapis.com/auth/drive.file" #> Per-file access to files created or opened by the app.
+        "https://www.googleapis.com/auth/spreadsheets",
+        #> Allows read/write access to the user's sheets and their properties.
+        "https://www.googleapis.com/auth/drive.file"
+        #> Per-file access to files created or opened by the app.
     ]
 
     credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILEPATH, AUTH_SCOPE)

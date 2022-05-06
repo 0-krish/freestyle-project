@@ -1,6 +1,7 @@
 
 # Deploying to Heroku
 
+Adapted from https://github.com/prof-rossetti/daily-briefings-py/blob/main/DEPLOYING.md
 
 ## Prerequisites
 
@@ -22,7 +23,7 @@ heroku apps # at this time, results might be empty-ish
 Use the command-line (instructions below) to create a new application server, specifying a unique name (e.g. "freestyle-project-123", but yours will need to be different):
 
 ```sh
-heroku create freestyle-project-123 # choose your own unique name!
+heroku create news-headlines-123 # choose your own unique name!
 ```
 
 Verify the app has been created:
@@ -55,10 +56,25 @@ heroku config # at this time, results might be empty-ish
 
 heroku config:set SENDGRID_API_KEY="_________"
 heroku config:set SENDER_EMAIL_ADDRESS="someone@gmail.com"
-
 heroku config:set NEWS_API_KEY="_________"
 heroku config:set "SECRET_KEY"="_________"
+heroku config:set GOOGLE_SHEET_ID="_______"
+heroku config:set NEWS_CATEGORY="_______"
+```
+All these environment variables are the same as found in the .env file setup in the READE file
 
+Next, you should set the following variables that are different from the README file:
+```sh
+heroku config:set APP_MODE="deployment"
+heroku config:set GOOGLE_APPLICATION_CREDENTIALS="google-credentials.json"
+heroku config:set GOOGLE_CREDENTIALS="{_______}"
+```
+For the Google Credentials variable, set it to be equal to the contents of your local google-credentials.json file.
+
+Finally, you must install a third-party buildpack on heroku to create the google-credentials.json file on the server:
+- To do so, use the following command:
+```sh
+heroku buildpacks:set https://github.com/buyersight/heroku-google-application-credentials-buildpack.git
 ```
 
 At this point, you should be able to verify the production environment has been configured with the proper environment variable values:
@@ -85,11 +101,11 @@ Once you've deployed the source code to the Heroku server, login to the server t
 heroku run bash # login to the server
 # ... whoami # see that you are not on your local computer anymore
 # ... ls -al # optionally see the files, nice!
-# ... python -m app.freestyle-project # see the output, nice!
+# ... python -m app.subscription_service # see the output, nice!
 # ... exit # logout
 
 # or alternatively, run it from your computer, in "detached" mode:
-heroku run "python -m app.freestyle-project"
+heroku run "python -m app.subscription_service"
 ```
  
 ## Scheduling the Script
@@ -104,7 +120,7 @@ From the "Resources" tab in your application's Heroku dashboard, search for an a
 
 > NOTE: if doing this for the first time, Heroku may ask you to provide billing info. Feel free (but not obligated) to provide it, as the services we are using to complete this exercise are all free, and your card should not be charged!
 
-Finally, click on the provisioned "Heroku Scheduler" resource from the "Resources" tab, then click to "Add a new Job". When adding the job, choose to execute the designated python command (`python -m app.daily_briefing`) at a scheduled interval (e.g. every 10 minutes), and finally click to "Save" the job:
+Finally, click on the provisioned "Heroku Scheduler" resource from the "Resources" tab, then click to "Add a new Job". When adding the job, choose to execute the designated python command (`python -m app.subscription_service`) at a scheduled interval (e.g. every 10 minutes), and finally click to "Save" the job:
 
 ![a screenshot of the job configuration menu](https://user-images.githubusercontent.com/1328807/54229044-da259980-44d9-11e9-91d8-51773499cbfb.png)
 
@@ -114,8 +130,3 @@ Finally, click on the provisioned "Heroku Scheduler" resource from the "Resource
 Congratulations, you have just deployed a software service!
 
 Monitor your inbox over the specified time period and witness your notification service in action!
-
-
-Adapted from https://github.com/prof-rossetti/daily-briefings-py/blob/main/DEPLOYING.md
-
-

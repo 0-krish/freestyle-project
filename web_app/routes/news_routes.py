@@ -30,7 +30,8 @@ def news_headlines_api():
 def news_form():
 
     '''
-    Via the "/news/form" route, renders the "news_form.html" template if the request method is "GET", otherwise the form sends a "POST"  
+    Via the "/news/form" route, renders the "news_form.html" template if the request method is "GET",
+    otherwise the form sends a "POST"
     '''
 
     print("NEWS HEADLINES...")
@@ -47,7 +48,8 @@ def news_form():
 def news_headline_options():
 
     '''
-    Via the "/news/headline_options" route, renders the "news_headlines_options.html" template if request method is "GET". If request method is "POST", renders "news_headlines.html" template.
+    Via the "/news/headline_options" route, renders the "news_headlines_options.html" template if request method
+    is "GET". If request method is "POST", renders "news_headlines.html" template.
     '''
 
     print("NEWS HEADLINE OPTIONS...")
@@ -68,7 +70,8 @@ def news_headline_options():
 def news_headlines():
 
     '''
-    Via the "/news/headlines" route, renders  the "news_headlines.html", populated with headlines based on the user specified country and news category.
+    Via the "/news/headlines" route, renders  the "news_headlines.html", populated with headlines based
+     on the user specified country and news category.
     '''
 
     print("NEWS HEADLINES...")
@@ -92,7 +95,8 @@ def news_send_email():
     '''
     Via /news/send_email" route, stores the user data onto a sheet so that they can subscibe to the email service. 
 
-    Redirects back to /news/form is request method is "GET", sends email and stores user inputs if request method is "POST"
+    Redirects back to /news/form is request method is "GET", sends email and stores user inputs if
+    request method is "POST"
     '''
     print("SEND NEWS HEADLINES EMAIL...")
 

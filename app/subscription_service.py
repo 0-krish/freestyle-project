@@ -7,7 +7,7 @@ from app.news_email import send_news_email
 def run_subscription():
 
     '''
-    Allows a user to subscribe to the email servive by reading the user data into a dictionary called "user_dict" from a Google Sheet.
+    Allows all subscription emails to be sent by reading in the data and then looping through it to send emails
     '''
 
     user_dict = read_sheet()  # read user data in from Google sheet to dictionary
