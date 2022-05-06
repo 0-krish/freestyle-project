@@ -16,11 +16,11 @@
         <a href="{{ headline['url'] }}"><h4>{{ headline["title"] }}</h4></a>
         <!-- <img src={image_url} alt={headline['title']} class='center' width={image_width} height={image_height}>" -->
 
-        {% if headline['url'] != "null" %}
+        {% if headline['url'] != None %}
             <p style="text-align:center;"><img src="{{ headline['urlToImage'] }}" alt="{{ headline['title'] }}" class="center" width="600" height="337.5" ></p>
         {% endif %}
 
-        {% if headline['description'] != "null" %}
+        {% if headline['description'] != None %}
             <p>{{ headline["description"] }} </p>
         {% endif %}
 
