@@ -8,3 +8,7 @@ __pycache__
 
 # ignore google credentials
 app/google-credentials.json
+
+# ignore IDE files
+.idea/**
+.DS_Store
